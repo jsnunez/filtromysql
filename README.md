@@ -101,9 +101,18 @@ limit 1
 
 
 9 Mostrar el pedido más reciente de cada cliente
-
-
-
+~~~sql
+SELECT c.nombre, t.fechas,p1.total 
+FROM cliente AS c
+JOIN pedidos as p1
+on p1.fkidcliente=c.id
+right JOIN(SELECT c.id, MAX(p.fecha) AS fechas
+FROM cliente AS c
+JOIN pedidos AS p
+ON c.id=p.fkidcliente 
+GROUP by c.id) AS t
+ON p1.fecha=t.fechas;
+~~~
 
 
 10 Obtener el detalle de pedidos (menús y cantidades) para el cliente 'Juan Perez'.
