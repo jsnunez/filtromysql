@@ -66,7 +66,7 @@ limit 1);
 
 7. Listar los clientes que han realizado más de un pedido
 
-
+~~~sql
 SELECT  nombre, correo_electronico 
 FROM cliente AS c
 JOIN pedidos AS p
@@ -78,7 +78,7 @@ ON n.fkidcliente=p.fkidcliente
 WHERE compras >1
 GROUP BY nombre, correo_electronico 
 ;
-
+~~~
 
 
 
